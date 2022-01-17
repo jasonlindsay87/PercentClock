@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
     }
 
     @Override
@@ -28,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 Calendar calendar = Calendar.getInstance();
                 SimpleDateFormat sdf = new SimpleDateFormat("EEEE");
-                TextView tvTheTimeIs = (TextView)findViewById(R.id.theTimeIs);
+                TextView tvTheTimeIs = (TextView)findViewById(R.id.tvDayName);
                 TextView tvTime = (TextView) findViewById(R.id.tvTime);
                 TextView tvMonth = (TextView) findViewById(R.id.tvMonth);
                 TextView tvMonthName = (TextView) findViewById(R.id.tvMonthName);
@@ -55,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         super.onPause();
     }
 
-    protected double getDayPercent() {
+    public static double getDayPercent() {
         Calendar calendar = Calendar.getInstance();
         int hrs = calendar.get(Calendar.HOUR_OF_DAY);
         int mins = calendar.get(Calendar.MINUTE);
@@ -66,8 +67,7 @@ public class MainActivity extends AppCompatActivity {
         return percent;
     }
 
-
-    protected double getMonthPercent() {
+    public static double getMonthPercent() {
         Calendar calendar = Calendar.getInstance();
         double secondsInMonth = calendar.getActualMaximum(Calendar.DAY_OF_MONTH) * 86400;
         double elapsedSecsToday = calendar.get(Calendar.HOUR_OF_DAY) * 3600 +  calendar.get(Calendar.MINUTE) * 60 + calendar.get(Calendar.SECOND);
@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
         return percent;
     }
 
-    protected double getYearPercent() {
+    public static double getYearPercent() {
         Calendar calendar = Calendar.getInstance();
         double secondsInYear = calendar.getActualMaximum(Calendar.DAY_OF_YEAR) * 86400;
         double elapsedSecondsInYear = calendar.get(Calendar.DAY_OF_YEAR) * 86400;
